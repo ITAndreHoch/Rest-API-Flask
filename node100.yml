@@ -1,0 +1,47 @@
+---
+- hosts: node100
+  remote_user: vagrant
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: installation - Docker
+      yum: 
+        name: docker
+        state: present 
+
+    - name: enable docker systemd service
+      service:
+        name: 'docker'
+        state: 'started'
+        enabled: 'yes'
+
+    - name: Disable SELinux
+      selinux: state=disabled
+
+    - name: installation - Docker-compose
+      yum:
+        name: docker-compose
+        state: present
+
+    - name: installation - mysql 
+      yum:
+        name: mysql
+        state: present
+
+    - name: copying file
+      copy:
+        src: files/mysql.tar
+        dest: /root/mysql.tar
+        owner: root
+        group: root
+        mode: 0700
+
+
+    - name: Creating database and tables
+      shell: 'cd /root/; tar xvf mysql.tar; cd /root/mysql; /root/mysql/mysql_exec.sh' 
+      register: message
+      failed_when: message.rc != 1 and message.rc != 0
+      args:
+        warn: false
+

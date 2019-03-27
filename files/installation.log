@@ -1,0 +1,73 @@
+Andrzejs-MacBook-Pro:API-Exercise andrzejhochbaum$ vagrant up
+Bringing machine 'node100' up with 'virtualbox' provider...
+==> node100: Importing base box 'centos/7'...
+==> node100: Matching MAC address for NAT networking...
+==> node100: Checking if box 'centos/7' is up to date...
+==> node100: Setting the name of the VM: node100
+==> node100: Clearing any previously set network interfaces...
+==> node100: Preparing network interfaces based on configuration...
+    node100: Adapter 1: nat
+    node100: Adapter 2: hostonly
+==> node100: Forwarding ports...
+    node100: 22 (guest) => 2222 (host) (adapter 1)
+==> node100: Booting VM...
+==> node100: Waiting for machine to boot. This may take a few minutes...
+    node100: SSH address: 127.0.0.1:2222
+    node100: SSH username: vagrant
+    node100: SSH auth method: private key
+    node100: 
+    node100: Vagrant insecure key detected. Vagrant will automatically replace
+    node100: this with a newly generated keypair for better security.
+    node100: 
+    node100: Inserting generated public key within guest...
+    node100: Removing insecure key from the guest if it's present...
+    node100: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> node100: Machine booted and ready!
+==> node100: Checking for guest additions in VM...
+    node100: No guest additions were detected on the base box for this VM! Guest
+    node100: additions are required for forwarded ports, shared folders, host only
+    node100: networking, and more. If SSH fails on this machine, please install
+    node100: the guest additions and repackage the box to continue.
+    node100: 
+    node100: This is not an error message; everything may continue to work properly,
+    node100: in which case you may ignore this message.
+==> node100: Setting hostname...
+==> node100: Configuring and enabling network interfaces...
+==> node100: Rsyncing folder: /Users/andrzejhochbaum/Projects/aaa/API-Exercise/ => /vagrant
+==> node100: Running provisioner: ansible_local...
+    node100: Installing Ansible...
+    node100: Running ansible-playbook...
+
+PLAY [node100] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [node100]
+
+TASK [installation - Docker] ***************************************************
+changed: [node100]
+
+TASK [enable docker systemd service] *******************************************
+changed: [node100]
+
+TASK [Disable SELinux] *********************************************************
+changed: [node100]
+ [WARNING]: SELinux state temporarily changed from 'enforcing' to 'permissive'.
+State change will take effect next reboot.
+
+
+TASK [installation - Docker-compose] *******************************************
+changed: [node100]
+
+TASK [installation - mysql] ****************************************************
+changed: [node100]
+
+TASK [copying file] ************************************************************
+changed: [node100]
+
+TASK [Creating database and tables] ********************************************
+changed: [node100]
+
+PLAY RECAP *********************************************************************
+node100                    : ok=8    changed=7    unreachable=0    failed=0   
+
+
