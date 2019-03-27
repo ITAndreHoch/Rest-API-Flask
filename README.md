@@ -192,6 +192,8 @@ services:
 ```
 **FLASK FILES**
 
+REAMRK: MySQL Alchemy is finally recommended to connect and operate on MYSQL DB - Python
+
 app.py:
 ```
 from flask import Flask
